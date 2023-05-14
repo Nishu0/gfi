@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import IssueCard from '../components/card';
 
 const GoodFirstIssues = () => {
   const [issues, setIssues] = useState([]);
@@ -17,15 +18,9 @@ const GoodFirstIssues = () => {
   return (
     <div>
       <h1>Good First Issues</h1>
-      <ul>
-        {issues.map((issue) => (
-          <li key={issue.id}>
-            <a href={issue.html_url} target="_blank" rel="noopener noreferrer">
-              {issue.title}
-            </a>
-          </li>
-        ))}
-      </ul>
+      {issues.map((issue) => (
+        <IssueCard key={issue.id} issue={issue} />
+      ))}
     </div>
   );
 };
